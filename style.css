@@ -1,0 +1,26 @@
+:root {
+    --grid-col: 16;
+    --grid-row: 16;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-col), 1fr);
+    grid-template-rows: repeat(var(--grid-row), 1fr);
+    grid-gap: 0;
+  }
+  
+
+.cell {
+  background-color: lightgray;
+  width: 30px;
+  height: 30px;
+}
