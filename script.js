@@ -1,4 +1,4 @@
-const container = document.querySelector("#container");
+const sketchframe = document.querySelector("#sketchframe");
 
 function generateCells(column, row){
     document.documentElement.style.setProperty('--grid-col', column);
@@ -7,7 +7,7 @@ function generateCells(column, row){
         for(let j=1; j <= row; j++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
-            container.appendChild(cell);
+            sketchframe.appendChild(cell);
 
             
             cell.addEventListener('mouseover', ()=> {
@@ -19,7 +19,7 @@ function generateCells(column, row){
     }
 }
 
-generateCells(3, 5);
+generateCells(15, 15);
 
 function getRandomColor() {
     return Math.floor(Math.random() * 16777215).toString(16);

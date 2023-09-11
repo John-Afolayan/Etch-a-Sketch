@@ -3,7 +3,7 @@
     --grid-row: 16;
 }
 
-body {
+#container {
   display: flex;
   height: 100vh;
   margin: 0;
@@ -11,7 +11,7 @@ body {
   align-items: center;
 }
 
-#container {
+#sketchframe {
     display: grid;
     grid-template-columns: repeat(var(--grid-col), 1fr);
     grid-template-rows: repeat(var(--grid-row), 1fr);
@@ -23,4 +23,9 @@ body {
   background-color: lightgray;
   width: 30px;
   height: 30px;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
 }
