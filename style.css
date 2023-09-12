@@ -1,41 +1,40 @@
 :root {
     --grid-col: 16;
     --grid-row: 16;
+    --cell-size: calc(100% / var(--grid-col));
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(188, 188, 188);
 }
 
 #title {
+  font-size: 4vw;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 2%;
   font-family: 'Courier New', Courier, monospace;
-  font-size: xx-large;
 }
 
 #sketch_container {
   display: flex;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin-top: -70px;
   justify-content: center;
   align-items: center;
 }
 
 #sketch_frame {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-col), 1fr);
-    grid-template-rows: repeat(var(--grid-row), 1fr);
-    grid-gap: 0;
-  }
-  
+  width: 80vmin;
+  height: 80vmin;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-col), 1fr);
+  grid-template-rows: repeat(var(--grid-row), 1fr);
+}
 
 .cell {
   background-color: lightgray;
-  width: 30px;
-  height: 30px;
-}
-
-body {
-  background-color: rgb(188, 188, 188);
 }
