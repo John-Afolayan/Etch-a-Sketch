@@ -1,6 +1,11 @@
 const sketch_frame = document.querySelector("#sketch_frame");
 
 function generateCells(column, row){
+    // Clear old cells
+    while (sketch_frame.firstChild) {
+        sketch_frame.firstChild.remove();
+    }
+    
     const sketchFrameSize = sketch_frame.getBoundingClientRect().width;
     const cellSize = sketchFrameSize / column;
 
