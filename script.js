@@ -16,7 +16,6 @@ function generateCells(column, row){
 
             
             cell.addEventListener('mouseover', ()=> {
-                console.log("a");
                 const color = getRandomColor();
                 cell.style.backgroundColor = '#' + color;
             });
@@ -24,8 +23,18 @@ function generateCells(column, row){
     }
 }
 
-generateCells(15, 15);
+generateCells(5, 5);
 
 function getRandomColor() {
     return Math.floor(Math.random() * 16777215).toString(16);
+}
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("frame_text_size");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  generateCells(this.value, this.value);
 }
