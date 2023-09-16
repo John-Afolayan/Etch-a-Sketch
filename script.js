@@ -5,7 +5,7 @@ function generateCells(column, row){
     while (sketch_frame.firstChild) {
         sketch_frame.firstChild.remove();
     }
-    
+
     const sketchFrameSize = sketch_frame.getBoundingClientRect().width;
     const cellSize = sketchFrameSize / column;
 
@@ -18,17 +18,31 @@ function generateCells(column, row){
             const cell = document.createElement('div');
             cell.classList.add('cell');
             sketch_frame.appendChild(cell);
-
-            
-            cell.addEventListener('mouseover', ()=> {
-                const color = getRandomColor();
-                cell.style.backgroundColor = '#' + color;
-            });
         }
     }
 }
 
-generateCells(5, 5);
+function assignEventListeners() {
+    const cells = document.querySelectorAll('.cell');
+
+    cells.forEach(cell => {
+        // Remove old event listeners
+        const newCell = cell.cloneNode(true);
+        cell.parentNode.replaceChild(newCell, cell);
+
+        //Assign new event listener based on active button (mouse/hover or click)
+        if (mouseButton.classList.contains('active')) {
+            newCell.addEventListener('mouseover', changeColor);
+        } else if (clickButton.classList.contains('active')) {
+            newCell.addEventListener('click', changeColor);
+        }
+    });
+}
+
+function changeColor() {
+    const color = getRandomColor();
+    this.style.backgroundColor = '#' + color
+}
 
 function getRandomColor() {
     return Math.floor(Math.random() * 16777215).toString(16);
@@ -42,4 +56,23 @@ output.innerHTML = slider.value; // Display the default slider value
 slider.oninput = function() {
   output.innerHTML = this.value;
   generateCells(this.value, this.value);
+  assignEventListeners();
 }
+
+const mouseButton = document.querySelector(".mouse-sensitive-button");
+const clickButton = document.querySelector(".click-sensitive-button");
+
+mouseButton.addEventListener('click', function() {
+  this.classList.add('active');
+  clickButton.classList.remove('active');
+  assignEventListeners();
+});
+
+clickButton.addEventListener('click', function() {
+  this.classList.add('active');
+  mouseButton.classList.remove('active');
+  assignEventListeners();
+});
+
+generateCells(5, 5);
+assignEventListeners();
