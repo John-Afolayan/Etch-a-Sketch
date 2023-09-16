@@ -68,6 +68,7 @@ slider.oninput = function() {
   }, 200); // Set a delay of 500ms before updating cells
 };
 
+
 const mouseButton = document.querySelector(".mouse-sensitive-button");
 const clickButton = document.querySelector(".click-sensitive-button");
 
