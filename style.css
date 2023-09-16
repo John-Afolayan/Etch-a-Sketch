@@ -47,6 +47,7 @@ body {
 /* Start of CSS for the slider */
 .slidecontainer {
   width: 100%;
+  margin-bottom: 25px;
 }
 
 .slider {
@@ -89,7 +90,7 @@ body {
 
 /* End of CSS for the slider */
 
-p {
+.control_panel_text {
   text-align: center;
 }
 

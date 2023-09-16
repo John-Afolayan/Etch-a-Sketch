@@ -1,10 +1,9 @@
 const sketch_frame = document.querySelector("#sketch_frame");
+let isMouseDown = false;
+let timeoutId; //For debouncing the slider input
 
 function generateCells(column, row){
-    // Clear old cells
-    while (sketch_frame.firstChild) {
-        sketch_frame.firstChild.remove();
-    }
+    sketch_frame.innerHTML = ''; // Clear old cells
 
     const sketchFrameSize = sketch_frame.getBoundingClientRect().width;
     const cellSize = sketchFrameSize / column;
@@ -35,6 +34,11 @@ function assignEventListeners() {
             newCell.addEventListener('mouseover', changeColor);
         } else if (clickButton.classList.contains('active')) {
             newCell.addEventListener('click', changeColor);
+            newCell.addEventListener('mouseover', () => {
+                if (isMouseDown) {
+                    changeColor.call(newCell);
+                }
+            });
         }
     });
 }
@@ -55,9 +59,14 @@ output.innerHTML = slider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
   output.innerHTML = this.value;
-  generateCells(this.value, this.value);
-  assignEventListeners();
-}
+
+  clearTimeout(timeoutId); //Clear existing timeout
+
+  timeoutId = setTimeout(() => {
+    generateCells(this.value, this.value);
+    assignEventListeners();
+  }, 200); // Set a delay of 500ms before updating cells
+};
 
 const mouseButton = document.querySelector(".mouse-sensitive-button");
 const clickButton = document.querySelector(".click-sensitive-button");
@@ -73,6 +82,15 @@ clickButton.addEventListener('click', function() {
   mouseButton.classList.remove('active');
   assignEventListeners();
 });
+
+window.addEventListener('mousedown', () => {
+    isMouseDown = true;
+  });
+  
+  window.addEventListener('mouseup', () => {
+    isMouseDown = false;
+  });
+  
 
 generateCells(5, 5);
 assignEventListeners();
