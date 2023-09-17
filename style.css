@@ -1,7 +1,7 @@
 :root {
-    --grid-col: 16;
-    --grid-row: 16;
-    --cell-size: calc(100% / var(--grid-col));
+  --grid-col: 16;
+  --grid-row: 16;
+  --cell-size: calc(100% / var(--grid-col));
 }
 
 body {
@@ -12,13 +12,14 @@ body {
   height: 100vh;
   margin: 0;
   background-color: rgb(188, 188, 188);
+  font-family: Arial, sans-serif; /* Added */
 }
 
 #title {
   font-size: 4vw;
   text-align: center;
   padding-top: 2%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 #sketch_container {
@@ -56,7 +57,7 @@ body {
   width: 100%;
   height: 25px;
   height: 15px;
-  border-radius: 5px;  
+  border-radius: 5px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -75,8 +76,8 @@ body {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px;
-  border-radius: 50%; 
-  background: #04AA6D; /* Green background */
+  border-radius: 50%;
+  background: #04aa6d; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -84,7 +85,7 @@ body {
   width: 25px; /* Set a specific slider handle width */
   height: 25px;
   border-radius: 50%;
-  background: #04AA6D; /* Green background */
+  background: #04aa6d; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -92,19 +93,23 @@ body {
 
 .control_panel_text {
   text-align: center;
+  font-weight: bold; /* Added */
 }
 
 /* Start of CSS for buttons */
-.mouse-sensitive-button , .click-sensitive-button {
+.mouse-sensitive-button,
+.click-sensitive-button,
+#pickColorButton {
   appearance: none;
   background-color: transparent;
-  border: 2px solid #1A1A1A;
+  border: 2px solid #1a1a1a;
   border-radius: 15px;
   box-sizing: border-box;
-  color: #3B3B3B;
+  color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -115,7 +120,7 @@ body {
   padding: 16px 24px;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -123,20 +128,26 @@ body {
   will-change: transform;
 }
 
-.mouse-sensitive-button:disabled, .click-sensitive-button:disabled {
+.mouse-sensitive-button:disabled,
+.click-sensitive-button:disabled,
+#pickColorButton:disabled {
   pointer-events: none;
 }
 
-.mouse-sensitive-button:hover, .click-sensitive-button:hover {
+.mouse-sensitive-button:hover,
+.click-sensitive-button:hover,
+#pickColorButton:hover {
   color: #fff;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-.mouse-sensitive-button.active, .click-sensitive-button.active {
+.mouse-sensitive-button.active,
+.click-sensitive-button.active,
+#pickColorButton.active {
   color: #fff;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -145,4 +156,16 @@ body {
 
 .sketch_buttons {
   display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.color_picker {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  padding-top: 25px;
 }
