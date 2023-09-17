@@ -20,4 +20,5 @@ This project is a simple web-based version of the classic toy, Etch-a-Sketch. It
 To use this project, follow these steps:
 * Clone this repository to your local machine.
 * Open the index.html file in a web browser.
+  
 Or visit the [live preview.](https://john-afolayan.github.io/Etch-a-Sketch)
